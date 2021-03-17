@@ -5,5 +5,6 @@ export interface IDoctorInfoProp {
     clinic_address: string,
     avatar: string,
     specialty: [],
-    id: number
+    id: number,
+    distance: number
 }

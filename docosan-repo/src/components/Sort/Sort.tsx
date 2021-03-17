@@ -1,29 +1,51 @@
-import React from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles/sortStyles.scss';
+import { SortDistanceConstants, SortRatingConstants } from '../../constants/sortFilterConstants';
 
-Sort.propTypes = {
+interface IProps {
+    handleSort: any
+    sortKey: string
+}
 
-};
+function Sort(props: IProps) {
+    
+    const [sort, setSort] = useState(props.sortKey || "");
 
-function Sort(props: any) {
+    const handleChange = (event: any) => {
+        const { target: { value } } = event;
+        setSort(value);
+        props.handleSort && props.handleSort(value);
+    };
 
     const renderFormSort = () => {
         return <div className="dropdown-content">
-            <form>
-                <div className="radio">
+            <div>
+                <div>
                     <label>
-                        <input type="radio" value="option1" checked={true} />
-                        Khoảng cách
+                        <input
+                            type="radio"
+                            name="sort"
+                            value={SortDistanceConstants.value}
+                            checked={sort === SortDistanceConstants.value}
+                            onChange={handleChange}
+                        />
+                        {SortDistanceConstants.label}
                     </label>
                 </div>
-                <div className="radio">
+                <div>
                     <label>
-                        <input type="radio" value="option2" />
-                    Đánh giá
-                </label>
+                        <input
+                            type="radio"
+                            name="sort"
+                            value={SortRatingConstants.value}
+                            checked={sort === SortRatingConstants.value}
+                            onChange={handleChange}
+                        />
+                        {SortRatingConstants.label}
+                    </label>
                 </div>
-            </form>
+            </div>
         </div>
     }
 

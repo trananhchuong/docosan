@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import Filter from '../Filter/Filter';
-import Sort from '../Sort/Sort';
-import DataFake from '../../constants/data.json';
-import Loading from '../loading/Loading';
 import _ from 'lodash';
-
-import './styles/doctorList.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import DataFake from '../../constants/data.json';
 import { IDoctorInfoProp } from '../../Interface/IDoctorInfo';
-import { O_APPEND } from 'node:constants';
 import DoctorInfo from '../doctorInfo/DoctorInfo';
+import Filter from '../Filter/Filter';
+import Loading from '../loading/Loading';
+import Sort from '../Sort/Sort';
+import './styles/doctorList.scss';
+import { SortDistanceConstants, SortRatingConstants } from '../../constants/sortFilterConstants';
+
 
 DoctorList.propTypes = {
 
@@ -17,15 +16,18 @@ DoctorList.propTypes = {
 
 interface IDoctorListState {
     loading: boolean,
-    dataDoctor: any
+    dataDoctor: any,
+    sortKey: string
 }
 
 function DoctorList() {
 
     const [state, setState] = useState<IDoctorListState>({
         loading: true,
-        dataDoctor: []
+        dataDoctor: [],
+        sortKey: SortDistanceConstants.value
     });
+
 
     useEffect(() => {
         _.delay(() => {
@@ -35,8 +37,9 @@ function DoctorList() {
 
     const getDataDoctor = () => {
         setState({
+            ...state,
             loading: false,
-            dataDoctor: DataFake
+            dataDoctor: DataFake,
         })
     }
 
@@ -45,8 +48,11 @@ function DoctorList() {
 
     const renderDoctorInfoList = (data: [IDoctorInfoProp]) => {
         try {
-            return _.map(data, (item, index) => {
-                const { id, display_name, rating, clinic_name, clinic_address, avatar, specialty } = item;
+            console.log("state.sortKey: ", state.sortKey);
+            const dataSort = _.orderBy(data, [state.sortKey], ["desc"])
+
+            return _.map(dataSort, (item, index) => {
+                const { id, display_name, rating, clinic_name, clinic_address, avatar, specialty, distance } = item;
                 const propsDoctorInfo: IDoctorInfoProp = {
                     id,
                     display_name,
@@ -55,22 +61,35 @@ function DoctorList() {
                     clinic_address,
                     avatar,
                     specialty,
+                    distance
                 }
-                return <DoctorInfo
-                    {...propsDoctorInfo}
-                />
+
+                return <div key={id}>
+                    <DoctorInfo
+                        {...propsDoctorInfo}
+                    />
+                </div>
             })
         } catch (error) {
             console.log("🚀 ~ file: DoctorList.tsx ~ line 50 ~ renderDoctorInfoList ~ error", error)
         }
+    }
 
+    const handleSort = (value: string) => {
+        setState({
+            ...state,
+            sortKey: value
+        })
     }
 
     return (
         <div className="doctor-list">
             <h3>Danh sách các bác sĩ</h3>
             <div className="sort-filter">
-                <Sort />
+                <Sort
+                    sortKey={state.sortKey}
+                    handleSort={handleSort}
+                />
                 <Filter />
             </div>
             <div className="doctor-info-box">
