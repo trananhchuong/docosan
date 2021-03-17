@@ -30,6 +30,11 @@
             line-height: 2rem;
 
             label {
+                cursor: pointer;
+                input {
+                    cursor: pointer;
+                }
+
                 input[type="radio"]:before {
                     content: "";
                     display: block;
@@ -46,25 +51,7 @@
         }
     }
 
-    .dropdown:hover .dropdown-content {
+    .dropdown.clicked .dropdown-content {
         display: block;
     }
-
-    // .dropdown:hover .dropbtn {
-    //     background-color: #3e8e41;
-    // }
-
-    // input[type='radio'] {
-    //     -webkit-appearance:none;
-    //     width:20px;
-    //     height:20px;
-    //     border:1px solid darkgray;
-    //     border-radius:50%;
-    //     outline:none;
-    //     box-shadow:0 0 5px 0px gray inset;
-    // }
-
-    // input[type='radio']:checked:before {
-    //     background:red;
-    // }
 }

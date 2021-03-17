@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import './styles/starStyles.scss';
 import _ from 'lodash';
 
-Star.propTypes = {
-
-};
-
 interface IStarProps {
     rating: number
 }

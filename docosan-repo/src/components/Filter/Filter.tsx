@@ -11,6 +11,7 @@ interface IProps {
 function Filter(props: IProps) {
 
     const [filterKey, setFilterKey] = useState(props.filterKey || "");
+    const [click, setClick] = useState(false);
 
     const handleChange = (event: any) => {
         const { target: { value } } = event;
@@ -61,13 +62,23 @@ function Filter(props: IProps) {
         </div>
     }
 
-
     const isCheckedClass = filterKey ? "checked dropbtn" : "dropbtn";
+    const dropdownClass = click ? "dropdown clicked" : "dropdown";
+
+    const handleOnclick = () => {
+        setClick(!click);
+    }
+
     return (
         <div className="filter">
             Lọc kết quả
-            <div className="dropdown">
-                <button className={isCheckedClass}>{MapLanguage(filterKey) || "Ngôn ngữ"}</button>
+            <div className={dropdownClass}>
+                <button
+                    className={isCheckedClass}
+                    onClick={handleOnclick}
+                >
+                    {MapLanguage(filterKey) || "Ngôn ngữ"}
+                </button>
                 {renderFormFilter()}
             </div>
         </div>
