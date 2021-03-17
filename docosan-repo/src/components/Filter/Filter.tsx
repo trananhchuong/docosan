@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { FilterLangEnglish, FilterLangFrancaise, FilterLangVN, MapLanguage } from '../../constants/sortFilterConstants';
 import './styles/filterStyles.scss';
-import { FilterLangEnglish, FilterLangFrancaise, FilterLangVN, MapLanguage, SortDistanceConstants } from '../../constants/sortFilterConstants';
 
 
 interface IProps {

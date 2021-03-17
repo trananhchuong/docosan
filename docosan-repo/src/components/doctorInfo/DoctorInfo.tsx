@@ -19,15 +19,15 @@ function DoctorInfo(props: IDoctorInfoProp) {
                 <img src={props.avatar || IMAGES_USER.UserDefault} alt="avatar" />
             </div>
             <div className="detail">
-                <div>{props.display_name}</div>
-                <div>Rating: {props.rating}</div>
-                <div>clinic_name: {props.clinic_name}</div>
-                <Star rating={props.rating} />
-
-                <div>
-                    Chuyên khoa: {renderSpecial(props.specialty)}
+                <div className="display-name">{props.display_name}</div>
+                <Star rating={props.rating} /> 
+                <div className="special">
+                   Bác sĩ {renderSpecial(props.specialty)}
                 </div>
-                <div>clinicAddress: {props.clinic_address}</div>
+
+                <div>{props.clinic_name}</div>
+
+                <div>{props.clinic_address}</div>
 
             </div>
         </div>

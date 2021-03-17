@@ -1,7 +1,6 @@
-import React, { forwardRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import './styles/sortStyles.scss';
+import React, { useState } from 'react';
 import { SortDistanceConstants, SortRatingConstants } from '../../constants/sortFilterConstants';
+import './styles/sortStyles.scss';
 
 interface IProps {
     handleSort: any

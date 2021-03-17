@@ -39,7 +39,7 @@ function Star(props: IStarProps) {
 
     return (
         <div className="start-box">
-            {renderStar()}
+            {renderStar()}&ensp;<span>{Math.ceil(30 + props.rating)} bệnh nhân</span>
         </div>
     );
 }

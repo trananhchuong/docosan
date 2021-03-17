@@ -1,18 +1,13 @@
 import _ from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DataFake from '../../constants/data.json';
+import { SortDistanceConstants } from '../../constants/sortFilterConstants';
 import { IDoctorInfoProp } from '../../Interface/IDoctorInfo';
 import DoctorInfo from '../doctorInfo/DoctorInfo';
 import Filter from '../Filter/Filter';
 import Loading from '../loading/Loading';
 import Sort from '../Sort/Sort';
 import './styles/doctorList.scss';
-import { SortDistanceConstants, SortRatingConstants } from '../../constants/sortFilterConstants';
-
-
-DoctorList.propTypes = {
-
-};
 
 interface IDoctorListState {
     loading: boolean,

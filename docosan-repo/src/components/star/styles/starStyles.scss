@@ -1,4 +1,8 @@
 .start-box {
+    .fa-star{
+        color: var(--grey);
+    }
+
     .fa-star.checked {
         color: orange;
     }
