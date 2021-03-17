@@ -17,7 +17,9 @@ DoctorList.propTypes = {
 interface IDoctorListState {
     loading: boolean,
     dataDoctor: any,
-    sortKey: string
+    sortKey: string,
+    filterKey: string,
+
 }
 
 function DoctorList() {
@@ -25,7 +27,8 @@ function DoctorList() {
     const [state, setState] = useState<IDoctorListState>({
         loading: true,
         dataDoctor: [],
-        sortKey: SortDistanceConstants.value
+        sortKey: SortDistanceConstants.value,
+        filterKey: ""
     });
 
 
@@ -82,6 +85,13 @@ function DoctorList() {
         })
     }
 
+    const handleFilter = (value: string) => {
+        setState({
+            ...state,
+            filterKey: value
+        })
+    }
+
     return (
         <div className="doctor-list">
             <h3>Danh sách các bác sĩ</h3>
@@ -90,7 +100,10 @@ function DoctorList() {
                     sortKey={state.sortKey}
                     handleSort={handleSort}
                 />
-                <Filter />
+                <Filter
+                    filterKey={state.filterKey}
+                    handleFilter={handleFilter}
+                />
             </div>
             <div className="doctor-info-box">
                 {renderDoctorInfoList(state.dataDoctor)}

@@ -1,20 +1,16 @@
+import _ from 'lodash';
 import React from 'react';
-import PropTypes from 'prop-types';
-import { IDoctorInfoProp } from '../../Interface/IDoctorInfo';
-
-import './styles/doctorInfo.scss';
-import Star from '../star/Star';
 import { IMAGES_USER } from '../../constants/ImgConstants';
-
-DoctorInfo.propTypes = {
-
-};
-
+import { IDoctorInfoProp } from '../../Interface/IDoctorInfo';
+import Star from '../star/Star';
+import './styles/doctorInfo.scss';
 
 function DoctorInfo(props: IDoctorInfoProp) {
 
-    const renderSpecial = () => {
-
+    const renderSpecial = (specialty: any) => {
+        return _.map(specialty, (item, key) => {
+            return <span key={item.specialty_id || key}>{item.name}</span>
+        })
     }
 
     return (
@@ -28,10 +24,11 @@ function DoctorInfo(props: IDoctorInfoProp) {
                 <div>clinic_name: {props.clinic_name}</div>
                 <Star rating={props.rating} />
 
-                {/* <div>Chuyên khoa: {props.specialty}</div> */}
-
+                <div>
+                    Chuyên khoa: {renderSpecial(props.specialty)}
+                </div>
                 <div>clinicAddress: {props.clinic_address}</div>
-             
+
             </div>
         </div>
     );
