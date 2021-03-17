@@ -61,11 +61,13 @@ function Filter(props: IProps) {
         </div>
     }
 
+
+    const isCheckedClass = filterKey ? "checked dropbtn" : "dropbtn";
     return (
         <div className="filter">
             Lọc kết quả
             <div className="dropdown">
-                <button className="dropbtn">{MapLanguage(filterKey) || "Ngôn ngữ"}</button>
+                <button className={isCheckedClass}>{MapLanguage(filterKey) || "Ngôn ngữ"}</button>
                 {renderFormFilter()}
             </div>
         </div>

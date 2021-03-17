@@ -14,13 +14,25 @@
         }
     }
 
-    .detail{
-        .display-name{
-            color: var(--grey);
-            font-weight: 600;
+    .detail {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5rem;
+        color: var(--grey);
+
+        .top {
+            .display-name {
+                font-weight: 600;
+            }
         }
-        .special{
-            margin-bottom: 20px;
+
+        .bottom {
+            margin-top: auto;
+
+            .clinic-address {
+                font-weight: 300;
+                font-size: 14px;
+            }
         }
     }
 }

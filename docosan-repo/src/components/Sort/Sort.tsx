@@ -8,7 +8,7 @@ interface IProps {
 }
 
 function Sort(props: IProps) {
-    
+
     const [sort, setSort] = useState(props.sortKey || "");
 
     const handleChange = (event: any) => {
@@ -19,32 +19,26 @@ function Sort(props: IProps) {
 
     const renderFormSort = () => {
         return <div className="dropdown-content">
-            <div>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="sort"
-                            value={SortDistanceConstants.value}
-                            checked={sort === SortDistanceConstants.value}
-                            onChange={handleChange}
-                        />
-                        {SortDistanceConstants.label}
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="sort"
-                            value={SortRatingConstants.value}
-                            checked={sort === SortRatingConstants.value}
-                            onChange={handleChange}
-                        />
-                        {SortRatingConstants.label}
-                    </label>
-                </div>
-            </div>
+            <label>
+                <input
+                    type="radio"
+                    name="sort"
+                    value={SortDistanceConstants.value}
+                    checked={sort === SortDistanceConstants.value}
+                    onChange={handleChange}
+                />
+                {SortDistanceConstants.label}
+            </label>
+            <label>
+                <input
+                    type="radio"
+                    name="sort"
+                    value={SortRatingConstants.value}
+                    checked={sort === SortRatingConstants.value}
+                    onChange={handleChange}
+                />
+                {SortRatingConstants.label}
+            </label>
         </div>
     }
 
