@@ -7,6 +7,9 @@ import Loading from '../loading/Loading';
 import _ from 'lodash';
 
 import './styles/doctorList.scss';
+import { IDoctorInfoProp } from '../../Interface/IDoctorInfo';
+import { O_APPEND } from 'node:constants';
+import DoctorInfo from '../doctorInfo/DoctorInfo';
 
 DoctorList.propTypes = {
 
@@ -40,7 +43,26 @@ function DoctorList() {
     if (state.loading)
         return <Loading />;
 
-    const renderDoctorInfoList = () => {
+    const renderDoctorInfoList = (data: [IDoctorInfoProp]) => {
+        try {
+            return _.map(data, (item, index) => {
+                const { id, display_name, rating, clinic_name, clinic_address, avatar, specialty } = item;
+                const propsDoctorInfo: IDoctorInfoProp = {
+                    id,
+                    display_name,
+                    rating,
+                    clinic_name,
+                    clinic_address,
+                    avatar,
+                    specialty,
+                }
+                return <DoctorInfo
+                    {...propsDoctorInfo}
+                />
+            })
+        } catch (error) {
+            console.log("🚀 ~ file: DoctorList.tsx ~ line 50 ~ renderDoctorInfoList ~ error", error)
+        }
 
     }
 
@@ -50,6 +72,9 @@ function DoctorList() {
             <div className="sort-filter">
                 <Sort />
                 <Filter />
+            </div>
+            <div className="doctor-info-box">
+                {renderDoctorInfoList(state.dataDoctor)}
             </div>
         </div>
     );
