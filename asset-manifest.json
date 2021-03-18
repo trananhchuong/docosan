@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/docosan/static/css/main.14dbc1d6.chunk.css",
+    "main.js": "/docosan/static/js/main.80e61dd9.chunk.js",
+    "main.js.map": "/docosan/static/js/main.80e61dd9.chunk.js.map",
+    "runtime-main.js": "/docosan/static/js/runtime-main.b8e0e7b4.js",
+    "runtime-main.js.map": "/docosan/static/js/runtime-main.b8e0e7b4.js.map",
+    "static/js/2.5a79f581.chunk.js": "/docosan/static/js/2.5a79f581.chunk.js",
+    "static/js/2.5a79f581.chunk.js.map": "/docosan/static/js/2.5a79f581.chunk.js.map",
+    "static/js/3.3f660d4d.chunk.js": "/docosan/static/js/3.3f660d4d.chunk.js",
+    "static/js/3.3f660d4d.chunk.js.map": "/docosan/static/js/3.3f660d4d.chunk.js.map",
+    "index.html": "/docosan/index.html",
+    "static/css/main.14dbc1d6.chunk.css.map": "/docosan/static/css/main.14dbc1d6.chunk.css.map",
+    "static/js/2.5a79f581.chunk.js.LICENSE.txt": "/docosan/static/js/2.5a79f581.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b8e0e7b4.js",
+    "static/js/2.5a79f581.chunk.js",
+    "static/css/main.14dbc1d6.chunk.css",
+    "static/js/main.80e61dd9.chunk.js"
+  ]
+}
