@@ -36,3 +36,15 @@ export const MapLanguage = (languageKey: string) => {
             return null;
     }
 }
+
+
+export const MapSort = (sortKey: string) => {
+    switch (sortKey) {
+        case SortDistanceConstants.value:
+            return SortDistanceConstants.label;
+        case SortRatingConstants.value:
+            return SortRatingConstants.label;
+        default:
+            return null;
+    }
+}

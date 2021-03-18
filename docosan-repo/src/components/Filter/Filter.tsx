@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FilterLangEnglish, FilterLangFrancaise, FilterLangVN, MapLanguage } from '../../constants/sortFilterConstants';
+import useOutsideClick from '../../customHook/useOutsideClick';
 import './styles/filterStyles.scss';
-
 
 interface IProps {
     handleFilter: any
@@ -12,6 +12,11 @@ function Filter(props: IProps) {
 
     const [filterKey, setFilterKey] = useState(props.filterKey || "");
     const [click, setClick] = useState(false);
+    const ref: any = useRef(null);
+
+    useOutsideClick(ref, () => {
+        if (click) setClick(false);
+    });
 
     const handleChange = (event: any) => {
         const { target: { value } } = event;
@@ -68,6 +73,20 @@ function Filter(props: IProps) {
     const handleOnclick = () => {
         setClick(!click);
     }
+    const handleRemove = (e: any) => {
+        e.stopPropagation();
+        setFilterKey("");
+    }
+
+    const renderBtnRemove = (filterKey: string) => {
+        return filterKey ?
+            <span
+                className="btn-remove"
+                onClick={handleRemove}>
+                &ensp;<i className="fa fa-remove"></i>
+            </span>
+            : null;
+    }
 
     return (
         <div className="filter">
@@ -76,8 +95,11 @@ function Filter(props: IProps) {
                 <button
                     className={isCheckedClass}
                     onClick={handleOnclick}
+                    ref={ref}
                 >
                     {MapLanguage(filterKey) || "Ngôn ngữ"}
+
+                    {renderBtnRemove(filterKey)}
                 </button>
                 {renderFormFilter()}
             </div>

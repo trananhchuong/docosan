@@ -1,10 +1,10 @@
 .doctor-list {
-
-    h3{
-        color: var(--grey);
+    h2 {
+        color: #333333ab;
     }
 
     .sort-filter {
         display: flex;
+        color: var(--grey);
     }
 }

@@ -1,4 +1,6 @@
 .filter {
+    margin-left: 20px;
+
     .dropdown {
         position: relative;
         display: inline-block;
@@ -38,6 +40,13 @@
             line-height: 2rem;
 
             label {
+                cursor: pointer;
+
+                input {
+                    cursor: pointer;
+                    margin-right: 10px;
+                }
+
                 input[type="radio"]:before {
                     content: "";
                     display: block;

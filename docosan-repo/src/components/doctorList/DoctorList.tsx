@@ -46,7 +46,6 @@ function DoctorList() {
 
     const renderDoctorInfoList = (data: [IDoctorInfoProp]) => {
         try {
-            console.log("state.sortKey: ", state.sortKey);
             const dataSort = _.orderBy(data, [state.sortKey], ["desc"])
 
             return _.map(dataSort, (item, index) => {
@@ -89,7 +88,7 @@ function DoctorList() {
 
     return (
         <div className="doctor-list">
-            <h3>Danh sách các bác sĩ</h3>
+            <h2>Danh sách các bác sĩ</h2>
             <div className="sort-filter">
                 <Sort
                     sortKey={state.sortKey}

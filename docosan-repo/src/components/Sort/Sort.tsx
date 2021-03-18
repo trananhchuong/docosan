@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { SortDistanceConstants, SortRatingConstants } from '../../constants/sortFilterConstants';
+import { SortDistanceConstants, SortRatingConstants, MapSort } from '../../constants/sortFilterConstants';
+import useOutsideClick from '../../customHook/useOutsideClick';
 import './styles/sortStyles.scss';
 
 interface IProps {
@@ -11,13 +12,11 @@ function Sort(props: IProps) {
 
     const [sort, setSort] = useState(props.sortKey || "");
     const [click, setClick] = useState(false);
-    // const ref = useRef();
+    const ref: any = useRef(null);
 
-    // const handleClick = (e: any) => {
-    //     if (ref.current && !ref.current.contains(e.target)) {
-    //         callback();
-    //     }
-    // };
+    useOutsideClick(ref, () => {
+        if (click) setClick(false);
+    });
 
     const handleChange = (event: any) => {
         const { target: { value } } = event;
@@ -62,9 +61,10 @@ function Sort(props: IProps) {
                 <button
                     className="dropbtn"
                     onClick={handleOnclick}
+                    ref={ref}
                 >
-                    Khoảng cách
-                    </button>
+                    {MapSort(sort)}
+                </button>
                 {renderFormSort()}
             </div>
         </div>
